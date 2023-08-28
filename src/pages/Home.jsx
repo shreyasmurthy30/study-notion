@@ -158,9 +158,8 @@ function Home() {
             </div>
             <div className="flex flex-col items-start gap-10 lg:w-[40%]">
               <div className="text-[16px]">
-                The modern StudyNotion is the dictates its own terms. Today, to
-                be a competitive specialist requires more than professional
-                skills.
+                Embrace the Power of Education and Unleash Your Potential with StudyNotion. Fuel Your Passion for Learning,
+                Overcome Challenges, and Achieve Your Dreams Through Our Innovative Tools.
               </div>
               <CTAButton active={true} linkto={"/signup"}>
                 <div className="">Learn More</div>
