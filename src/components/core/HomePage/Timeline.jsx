@@ -9,7 +9,7 @@ const TimeLine = [
     {
       Logo: Logo1,
       Heading: "Leadership",
-      Description: "Fully committed to the success company",
+      Description: "Fully committed to the success of the company",
     },
     {
       Logo: Logo2,

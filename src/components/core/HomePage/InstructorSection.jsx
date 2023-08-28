@@ -22,9 +22,8 @@ const InstructorSection = () => {
             </h1>
 
             <p className="font-medium text-[16px] text-justify w-[90%] text-richblack-300">
-              Instructors from around the world teach millions of students on
-              StudyNotion. We provide the tools and skills to teach what you
-              love.
+            Utilizing advanced learning technology, instructors at StudyNotion seamlessly educate millions of students worldwide.
+            Through interactive tools and expert guidance, they foster effective and personalized learning journeys.
             </p>
 
             <div className="w-fit">
