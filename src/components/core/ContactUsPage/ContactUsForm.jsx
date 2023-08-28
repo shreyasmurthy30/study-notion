@@ -119,7 +119,7 @@ const ContactUsForm = () => {
               {CountryCode.map((ele, i) => {
                 return (
                   <option key={i} value={ele.code}>
-                    {ele.code} -{ele.country}
+                    {ele.code}-{ele.country}
                   </option>
                 )
               })}

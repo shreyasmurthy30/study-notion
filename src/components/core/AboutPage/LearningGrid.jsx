@@ -16,31 +16,31 @@ const LearningGridArray = [
     order: 1,
     heading: "Curriculum Based on Industry Needs",
     description:
-      "Save time and money! The Belajar curriculum is made to be easier to understand and in line with industry needs.",
+      "StudyNotion delivers a curriculum attuned to industry requirements, equipping students with practical skills tailored to real-world demands.",
   },
   {
     order: 2,
     heading: "Our Learning Methods",
     description:
-      "Studynotion partners with more than 275+ leading universities and companies to bring",
+      "StudyNotion employs diverse and effective learning methods to cater to various styles of understanding",
   },
   {
     order: 3,
     heading: "Certification",
     description:
-      "Studynotion partners with more than 275+ leading universities and companies to bring",
+      "StudyNotion offers certification to validate and recognize the skills acquired through its comprehensive learning programs.",
   },
   {
     order: 4,
-    heading: `Rating "Auto-grading"`,
+    heading: "Auto-grading",
     description:
-      "Studynotion partners with more than 275+ leading universities and companies to bring",
+      "StudyNotion employs auto-grading to provide efficient and accurate assessment of student performance.",
   },
   {
     order: 5,
     heading: "Ready to Work",
     description:
-      "Studynotion partners with more than 275+ leading universities and companies to bring",
+      "Preparedness to enter the workforce with confidence and competence",
   },
 ];
 

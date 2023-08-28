@@ -13,9 +13,9 @@ const contactDetails = [
   {
     icon: "BiWorld",
     heading: "Visit us",
-    description: "Come and say hello at our office HQ.",
+    description: "Come and say hello at our HQ.",
     details:
-      "Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016",
+      "Embassy Golf Links Business Park Off Intermediate Ring Road Bangalore - 560071",
   },
   {
     icon: "IoCall",

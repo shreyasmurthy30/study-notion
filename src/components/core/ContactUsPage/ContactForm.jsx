@@ -8,7 +8,7 @@ const ContactForm = () => {
         Got a Idea? We&apos;ve got the skills. Let&apos;s team up
       </h1>
       <p className="">
-        Tell us more about yourself and what you&apos;re got in mind.
+        Tell us more about yourself and what you&apos;ve got in mind.
       </p>
 
       <div className="mt-7">

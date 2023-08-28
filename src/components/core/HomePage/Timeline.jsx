@@ -61,7 +61,7 @@ const TimelineSection = () => {
             <div className="flex gap-5 items-center lg:border-r border-caribbeangreen-300 px-7 lg:px-14">
               <h1 className="text-3xl font-bold w-[75px]">10</h1>
               <h1 className="text-caribbeangreen-300 text-sm w-[75px]">
-                Years experiences
+                Years of experience
               </h1>
             </div>
 
