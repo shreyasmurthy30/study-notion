@@ -13,7 +13,7 @@ const LearningLanguageSection = () => {
             <HighlightText text={"learning any language"} />
             <div className="text-center text-richblack-700 font-medium lg:w-[75%] mx-auto leading-6 text-base mt-3">
             Embarking on a journey to grasp multiple programming languages,
-             guided by a schedule customized to your preferences and pace.
+            guided by a schedule customized to your preferences and pace.
             </div>
             <div className="flex flex-col lg:flex-row items-center justify-center mt-8 lg:mt-0">
               <img
