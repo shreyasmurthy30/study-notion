@@ -31,7 +31,7 @@ export default function DeleteAccount() {
             <p>Would you like to delete account?</p>
             <p>
               This account may contain Paid Courses. Deleting your account is
-              permanent and will remove all the contain associated with it.
+              permanent and will remove all the content associated with it.
             </p>
           </div>
           <button
