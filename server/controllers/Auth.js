@@ -56,6 +56,7 @@ exports.signup = async (req, res) => {
     }
 
     // Find the most recent OTP for the email
+    // method to find the most recent otp : OTP.find({ email }).sort({ createdAt: -1 }).limit(1)
     const response = await OTP.find({ email }).sort({ createdAt: -1 }).limit(1)
     console.log(response)
     if (response.length === 0) {
@@ -71,7 +72,7 @@ exports.signup = async (req, res) => {
         message: "The OTP is not valid",
       })
     }
-
+    // password has matched
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10)
 
@@ -86,6 +87,7 @@ exports.signup = async (req, res) => {
       about: null,
       contactNumber: null,
     })
+    // create entry in db
     const user = await User.create({
       firstName,
       lastName,
@@ -97,7 +99,7 @@ exports.signup = async (req, res) => {
       additionalDetails: profileDetails._id,
       image: "",
     })
-
+    // return response
     return res.status(200).json({
       success: true,
       user,
@@ -128,6 +130,7 @@ exports.login = async (req, res) => {
     }
 
     // Find user with provided email
+    // and then get its addidtional details .using populate()
     const user = await User.findOne({ email }).populate("additionalDetails")
 
     // If user not found with provided email
@@ -141,8 +144,20 @@ exports.login = async (req, res) => {
 
     // Generate JWT token and Compare Password
     if (await bcrypt.compare(password, user.password)) {
-      const token = jwt.sign(
-        { email: user.email, id: user._id, role: user.role },
+      /* const payload = {
+           email: user.email,
+           id: user._id, role:
+           user.role
+      }
+      const token = jwt.sign({payload,process.env.JWT_SECRET, {
+          expiresIn: "24h",
+        }});
+      */ 
+      const token = jwt.sign({
+          email: user.email,
+          id: user._id, role:
+          user.role
+        },
         process.env.JWT_SECRET,
         {
           expiresIn: "24h",
@@ -151,9 +166,12 @@ exports.login = async (req, res) => {
 
       // Save token to user document in database
       user.token = token
+      // erase actual password as we will keep only token
       user.password = undefined
+      // create cookie
       // Set cookie for token and return success response
       const options = {
+        //  cookie expire in 3days
         expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
         httpOnly: true,
       }
@@ -178,9 +196,12 @@ exports.login = async (req, res) => {
     })
   }
 }
+
+
 // Send OTP For Email Verification
 exports.sendotp = async (req, res) => {
   try {
+    // fetch email from req body
     const { email } = req.body
 
     // Check if user is already present
@@ -196,24 +217,28 @@ exports.sendotp = async (req, res) => {
         message: `User is Already Registered`,
       })
     }
-
+    // call otpgenerator and ask to generate otp with specifics
     var otp = otpGenerator.generate(6, {
       upperCaseAlphabets: false,
       lowerCaseAlphabets: false,
       specialChars: false,
     })
+    // check unique otp
     const result = await OTP.findOne({ otp: otp })
     console.log("Result is Generate OTP Func")
     console.log("OTP", otp)
     console.log("Result", result)
+    // until we get a unique otp keep generating
     while (result) {
       otp = otpGenerator.generate(6, {
         upperCaseAlphabets: false,
       })
     }
+    // create an entry for otp in db
     const otpPayload = { email, otp }
     const otpBody = await OTP.create(otpPayload)
     console.log("OTP Body", otpBody)
+    // return response successful
     res.status(200).json({
       success: true,
       message: `OTP Sent Successfully`,
