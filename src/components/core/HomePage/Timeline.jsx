@@ -19,7 +19,7 @@ const TimeLine = [
     {
       Logo: Logo3,
       Heading: "Flexibility",
-      Description: "The ability to switch is an important skills",
+      Description: "The ability to upskill is very important",
     },
     {
       Logo: Logo4,
