@@ -28,7 +28,7 @@ function ForgotPassword() {
           <p className="my-4 text-[1.125rem] leading-[1.625rem] text-richblack-100">
             {!emailSent
               ? "Have no fear. We'll email you instructions to reset your password."
-              : `We have sent the reset email to ${email}`}
+              : `We have sent the reset link to ${email}`}
           </p>
           <form onSubmit={handleOnSubmit}>
             {!emailSent && (
