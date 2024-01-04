@@ -1,3 +1,4 @@
+// this function is for the pop up message which makes bg transparent
 export default function IconBtn({
   text,
   onclick,

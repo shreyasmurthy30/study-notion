@@ -20,9 +20,7 @@ const OTPSchema = new mongoose.Schema({
 // Define a function to send emails
 async function sendVerificationEmail(email, otp) {
 	// Create a transporter to send emails
-
 	// Define the email options
-
 	// Send the email
 	try {
 		const mailResponse = await mailSender(
@@ -37,11 +35,12 @@ async function sendVerificationEmail(email, otp) {
 	}
 }
 
-// Define a post-save hook to send email after the document has been saved
+// this function will be executed just before a new document is saved to the collection that corresponds to this schema
 OTPSchema.pre("save", async function (next) {
 	console.log("New document saved to database");
 
 	// Only send an email when a new document is created
+	// isNew property is a built-in property in Mongoose that's true for documents that haven't been saved to the database yet.
 	if (this.isNew) {
 		await sendVerificationEmail(this.email, this.otp);
 	}

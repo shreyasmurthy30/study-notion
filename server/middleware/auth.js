@@ -6,9 +6,17 @@ const User = require("../models/User");
 dotenv.config();
 
 // This function is used as middleware to authenticate user requests
+// if user authentication fails here only, then it wont check anything else
+// it will fail if the jwt token is nor 
 exports.auth = async (req, res, next) => {
 	try {
 		// Extracting JWT from request cookies, body or header
+		// Std method to get token- from body,header or coookie 
+		// checks if the token is present in the request cookies
+		// if not found in cookies, check if the token is in the request body.
+		// If still not found, it attempts to extract the token from the "Authorization" header,
+		// as it follows the "Bearer" token format.
+
 		const token =
 			req.cookies.token ||
 			req.body.token ||
@@ -19,6 +27,7 @@ exports.auth = async (req, res, next) => {
 			return res.status(401).json({ success: false, message: `Token Missing` });
 		}
 
+		// if jwt present then check if same as jwt secret
 		try {
 			// Verifying the JWT using the secret key stored in environment variables
 			const decode = await jwt.verify(token, process.env.JWT_SECRET);

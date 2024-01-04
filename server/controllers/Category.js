@@ -28,6 +28,7 @@ exports.createCategory = async (req, res) => {
   }
 }
 
+// This is for the category drop down we see in navbar
 exports.showAllCategories = async (req, res) => {
   try {
     const allCategorys = await Category.find()

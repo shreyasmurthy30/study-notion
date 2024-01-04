@@ -1,5 +1,6 @@
 const cloudinary = require("cloudinary").v2
 
+// will upload any file and not just img
 exports.uploadImageToCloudinary = async (file, folder, height, quality) => {
   const options = { folder }
   if (height) {

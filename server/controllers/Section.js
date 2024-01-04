@@ -5,6 +5,7 @@ const SubSection = require("../models/Subsection")
 exports.createSection = async (req, res) => {
   try {
     // Extract the required properties from the request body
+    // we need  courseid to update course and section id to update in db 
     const { sectionName, courseId } = req.body
 
     // Validate the input
@@ -53,13 +54,15 @@ exports.createSection = async (req, res) => {
 }
 
 // UPDATE a section
+// we can update the section name
 exports.updateSection = async (req, res) => {
   try {
     const { sectionName, sectionId, courseId } = req.body
+    // from sectionid u find and update the section name
     const section = await Section.findByIdAndUpdate(
       sectionId,
       { sectionName },
-      { new: true }
+      { new: true } // return updated data
     )
     const course = await Course.findById(courseId)
       .populate({

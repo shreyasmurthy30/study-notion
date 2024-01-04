@@ -18,13 +18,15 @@ exports.createSubSection = async (req, res) => {
     }
     console.log(video)
 
-    // Upload the video file to Cloudinary
+    // Upload the video file to Cloudinary in the given folder name
     const uploadDetails = await uploadImageToCloudinary(
       video,
       process.env.FOLDER_NAME
     )
     console.log(uploadDetails)
+
     // Create a new sub-section with the necessary information
+    // just add info about the new file
     const SubSectionDetails = await SubSection.create({
       title: title,
       timeDuration: `${uploadDetails.duration}`,
@@ -35,7 +37,7 @@ exports.createSubSection = async (req, res) => {
     // Update the corresponding section with the newly created sub-section
     const updatedSection = await Section.findByIdAndUpdate(
       { _id: sectionId },
-      { $push: { subSection: SubSectionDetails._id } },
+      { $push: { subSection: SubSectionDetails._id } }, 
       { new: true }
     ).populate("subSection")
 
@@ -56,13 +58,14 @@ exports.updateSubSection = async (req, res) => {
   try {
     const { sectionId, subSectionId, title, description } = req.body
     const subSection = await SubSection.findById(subSectionId)
-
+    // validate
     if (!subSection) {
       return res.status(404).json({
         success: false,
         message: "SubSection not found",
       })
     }
+    // if not undefined just update the title,description, and file
 
     if (title !== undefined) {
       subSection.title = title
@@ -73,6 +76,7 @@ exports.updateSubSection = async (req, res) => {
     }
     if (req.files && req.files.video !== undefined) {
       const video = req.files.video
+      // new file will be uploaded to cloudinary
       const uploadDetails = await uploadImageToCloudinary(
         video,
         process.env.FOLDER_NAME

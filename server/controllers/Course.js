@@ -18,7 +18,7 @@ exports.createCourse = async (req, res) => {
       courseDescription,
       whatYouWillLearn,
       price,
-      tag: _tag,
+      tag: _tag, // renaming tag to_tag as we will need to parse it later n then store it as tag itself
       category,
       status,
       instructions: _instructions,
@@ -114,7 +114,7 @@ exports.createCourse = async (req, res) => {
       },
       { new: true }
     )
-    console.log("HEREEEEEEEE", categoryDetails2)
+    console.log("HERE", categoryDetails2)
     // Return the new course and a success message
     res.status(200).json({
       success: true,

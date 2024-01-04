@@ -14,21 +14,22 @@ exports.resetPasswordToken = async (req, res) => {
         message: `This Email: ${email} is not Registered With Us Enter a Valid Email `,
       })
     }
+    // generate a token form crypto.randombytes , we get a hexadecimal val from this
     const token = crypto.randomBytes(20).toString("hex")
-
+    // update this val of token in user details and add an expiry time to this
     const updatedDetails = await User.findOneAndUpdate(
       { email: email },
       {
         token: token,
         resetPasswordExpires: Date.now() + 3600000,
       },
-      { new: true }
+      { new: true } // will send updated doc as response
     )
     console.log("DETAILS", updatedDetails)
 
-    // const url = `http://localhost:3000/update-password/${token}`
-    const url = `https://study-notion-two-sigma.vercel.app/signup.app/update-password/${token}`
-
+    // send this link in mail
+    const url = `https://study-notion-two-sigma.vercel.app/update-password/${token}`
+  
     await mailSender(
       email,
       "Password Reset",
@@ -59,6 +60,7 @@ exports.resetPassword = async (req, res) => {
         message: "Password and Confirm Password Does not Match",
       })
     }
+    // get user details from db using token
     const userDetails = await User.findOne({ token: token })
     if (!userDetails) {
       return res.json({

@@ -25,7 +25,7 @@ exports.signup = async (req, res) => {
     } = req.body
     // Check if All Details are there or not
     if (
-      !firstName ||
+      !firstName || 
       !lastName ||
       !email ||
       !password ||
@@ -130,7 +130,7 @@ exports.login = async (req, res) => {
     }
 
     // Find user with provided email
-    // and then get its addidtional details .using populate()
+    // and then we add additionalDetails to user using populate()
     const user = await User.findOne({ email }).populate("additionalDetails")
 
     // If user not found with provided email
@@ -143,20 +143,26 @@ exports.login = async (req, res) => {
     }
 
     // Generate JWT token and Compare Password
+
+    // compare hashed password and passoword entered by user
     if (await bcrypt.compare(password, user.password)) {
       /* const payload = {
            email: user.email,
-           id: user._id, role:
-           user.role
+           id: user._id, 
+           role: user.role
       }
       const token = jwt.sign({payload,process.env.JWT_SECRET, {
           expiresIn: "24h",
         }});
       */ 
+      
+      // if same then create a jwt using sign()
+      // we take the tokens payload and combine it with the JWT secret 
+      // to create a digital signature => signing => jwt.sign(payload,secret_key,{expiry});
       const token = jwt.sign({
           email: user.email,
-          id: user._id, role:
-          user.role
+          id: user._id, 
+          role: user.role
         },
         process.env.JWT_SECRET,
         {
@@ -168,12 +174,13 @@ exports.login = async (req, res) => {
       user.token = token
       // erase actual password as we will keep only token
       user.password = undefined
+      
       // create cookie
       // Set cookie for token and return success response
       const options = {
         //  cookie expire in 3days
         expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
-        httpOnly: true,
+        httpOnly: true, // prevent client-side scripts from accessing the cookie
       }
       res.cookie("token", token, options).status(200).json({
         success: true,
