@@ -173,7 +173,7 @@ const Footer = () => {
           </div>
 
           <div className="text-center">Shreyas Murthy © 2023 HACKIT</div>
-        </div>
+        </div> 
       </div>
     </div>
   );
