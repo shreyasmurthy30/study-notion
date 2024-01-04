@@ -3,7 +3,7 @@ import { FooterLink2 } from "../../data/footer-links";
 import { Link } from "react-router-dom";
 
 // Images
-import Logo from "../../assets/Logo/Logo-Full-Light.png";
+import Logo from "../../assets/Logo/loggo.jpg";
 
 // Icons
 import { FaFacebook, FaGoogle, FaTwitter, FaYoutube } from "react-icons/fa";
@@ -173,7 +173,7 @@ const Footer = () => {
           </div>
 
           <div className="text-center">Shreyas Murthy © 2023 HACKIT</div>
-        </div> 
+        </div>
       </div>
     </div>
   );
