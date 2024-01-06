@@ -21,7 +21,7 @@ import anidata from "../assets/Images/Animation - 1704341943206.json"
 
 function Home() {
   return (
-    <div>
+    <div className="bg-black">
       {/* Section 1 */}
       <div className="relative mx-auto flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8 text-white">
         {/* Become a Instructor Button */}

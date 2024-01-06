@@ -8,7 +8,7 @@ const LearningGridArray = [
     heading: "World-Class Learning for",
     highliteText: "Anyone, Anywhere",
     description:
-      "Studynotion partners with more than 275+ leading universities and companies to bring flexible, affordable, job-relevant online learning to individuals and organizations worldwide.",
+      "HACKIT partners with more than 275+ leading universities and companies to bring flexible, affordable, job-relevant online learning to individuals and organizations worldwide.",
     BtnText: "Learn More",
     BtnLink: "/",
   },
@@ -16,25 +16,25 @@ const LearningGridArray = [
     order: 1,
     heading: "Curriculum Based on Industry Needs",
     description:
-      "StudyNotion delivers a curriculum attuned to industry requirements, equipping students with practical skills tailored to real-world demands.",
+      "HACKIT delivers a curriculum attuned to industry requirements, equipping students with practical skills tailored to real-world demands.",
   },
   {
     order: 2,
     heading: "Our Learning Methods",
     description:
-      "StudyNotion employs diverse and effective learning methods to cater to various styles of understanding",
+      "HACKIT employs diverse and effective learning methods to cater to various styles of understanding",
   },
   {
     order: 3,
     heading: "Certification",
     description:
-      "StudyNotion offers certification to validate and recognize the skills acquired through its comprehensive learning programs.",
+      "HACKIT offers certification to validate and recognize the skills acquired through its comprehensive learning programs.",
   },
   {
     order: 4,
     heading: "Auto-grading",
     description:
-      "StudyNotion employs auto-grading to provide efficient and accurate assessment of student performance.",
+      "HACKIT employs auto-grading to provide efficient and accurate assessment of student performance.",
   },
   {
     order: 5,
